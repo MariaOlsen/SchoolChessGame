@@ -10,10 +10,11 @@ package model;
  * @author maria
  */
 public class Knight extends ChessPiece {
-    
-    public Knight(String name, boolean color, int xPosition, int yPosition) {
+
+    public Knight(String name, String color, int xPosition, int yPosition) {
         super(name, color, xPosition, yPosition);
     }
+    
     
     
     

@@ -13,11 +13,11 @@ public abstract class ChessPiece {
 
     private String name;
     //White = 0, Black = 1
-    private boolean color;
+    private String color;
     private int xPosition;
     private int yPosition;
 
-    public ChessPiece(String name, boolean color, int xPosition, int yPosition) {
+    public ChessPiece(String name, String color, int xPosition, int yPosition) {
         this.name = name;
         this.color = color;
         this.xPosition = xPosition;
@@ -62,53 +62,49 @@ public abstract class ChessPiece {
                 break;
         }
 
-        position = position + y;
+        position = position + Integer.toString(y + 1);
 
         return position;
     }
 
     public String[] possibleMoves() {
-        int count = 0;
+        //At any one time, the maximum number of steps a piece is allowed to take will be 21 or less
+        String[] moves = new String[21];
 
-        String[] moves = new String[0];
+        for (String s : moves) {
+            s = "";
+        }
+        
+        int count = 0;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if (canMoveTo(i, j)) {
-                    
-                  String[] temp = moves;
-                    moves = new String[count];
+
                     moves[count] = positionToField(xPosition, yPosition);
-                    for (int k = 0; k < count; k++) {
-                        moves[k] = temp[k];
-                    }
-                    
-                      count = count + 1;
+                    count = count + 1;
                 }
             }
         }
 
         return moves;
     }
-    
-    
-    
-    public String show(){
+
+    public String show() {
         String moves = "";
-        
-        for (String s : possibleMoves()){
+
+        for (String s : possibleMoves()) {
             moves = s + " - " + moves;
         }
-        
-        return this.color + ": " + this.name +
-                "::Pos (" + xPosition + "," + yPosition + ")\nKan rykke til: " + moves;  
+
+        return "superSHOW::" + this.color + ": " + this.name
+                + "::Pos (" + xPosition + "," + yPosition + ")\nKan rykke til: " + moves;
     }
-    
-    
-    public void move(int x, int y){
-        if (canMoveTo(x,y) == true){
+
+    public void move(int x, int y) {
+        if (canMoveTo(x, y) == true) {
             System.out.println(this.color + " " + this.name
-                    + positionToField(xPosition,yPosition) + " -> " + positionToField(x,y));
-                        
+                    + positionToField(xPosition, yPosition) + " -> " + positionToField(x, y));
+
             xPosition = x;
             yPosition = y;
         } else {
@@ -116,8 +112,6 @@ public abstract class ChessPiece {
         }
     }
 
-    
-    
     public String getName() {
         return name;
     }
@@ -126,11 +120,11 @@ public abstract class ChessPiece {
         this.name = name;
     }
 
-    public boolean isColor() {
+    public String isColor() {
         return color;
     }
 
-    public void setColor(boolean color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
@@ -150,8 +144,4 @@ public abstract class ChessPiece {
         this.yPosition = yPosition;
     }
 
-    
-    
-    
-    
 }

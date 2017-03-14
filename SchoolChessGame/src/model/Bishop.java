@@ -11,7 +11,7 @@ package model;
  */
 public class Bishop extends ChessPiece {
 
-    public Bishop(String name, boolean color, int xPosition, int yPosition) {
+    public Bishop(String name, String color, int xPosition, int yPosition) {
         super(name, color, xPosition, yPosition);
     }
 
@@ -27,22 +27,10 @@ public class Bishop extends ChessPiece {
     private boolean bishopMove(int x, int y) {
         boolean test = false;
 
-        System.out.println("Start: " + super.getxPosition() + "," + super.getyPosition());
-        
-        //In chess, the horizontal tiles are called Files (x-axis)
-        //the vertical tiles are called Ranks (y-axis)
-        for (int file = 1; file < 9; file++) {
-            for (int rank = 1; rank < 9; rank++) {
-                if ((Math.abs(file - super.getxPosition()) == Math.abs(rank - super.getyPosition()))) {
-                    System.out.println("True");
-                    System.out.println("Possible: (" + file + "," + rank + ")");
-                    test = true;
-                }
-            }
+        if ((Math.abs(x - super.getxPosition()) == Math.abs(y - super.getyPosition()))) {
+            test = true;
         }
 
-
-        
         return test;
     }
 

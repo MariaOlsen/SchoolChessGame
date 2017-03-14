@@ -5,6 +5,8 @@
  */
 package view;
 
+import model.*;
+
 /**
  *
  * @author maria
@@ -16,6 +18,29 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        ChessPiece[] chessPieces;
+        
+        chessPieces = new ChessPiece[3];
+        
+        chessPieces[0] = new Rook("Rook","Black",1,1);
+        chessPieces[1] = new Bishop("Bishop","White",2,6);
+        chessPieces[2] = new Knight("Knight","Grey",3,3);
+        
+        
+        for ( ChessPiece c : chessPieces){
+            System.out.println("SHOW::");
+            c.show();
+        }
+        
+        chessPieces[0].move(3,1);
+        chessPieces[1].move(7, 0);
+        chessPieces[2].move(1,2);
+        chessPieces[0].move(6, 1);
+        
+          for ( ChessPiece c : chessPieces){
+            c.show();
+        }
+        
     }
 
 }
