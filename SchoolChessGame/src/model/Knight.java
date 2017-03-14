@@ -29,8 +29,29 @@ public class Knight extends ChessPiece {
 
     private boolean knightMove(int x, int y) {
         boolean test = false;
-
+        
+        
+        //Two int values for the biggest and smallest - x vs y
+        //Two int values, retrieving the xPosition and yPosition for comparison
+        int biggest, cBiggest, smallest, cSmallest;
+        
+        //Comparing x vs y
+        if(Math.abs(x) > Math.abs(y)){
+            biggest = x;
+            cBiggest = super.getxPosition();
+            smallest = y;
+            cSmallest = super.getyPosition();
+        } else  {
+            biggest = y;
+            cBiggest = super.getyPosition();
+            smallest = x;
+            cSmallest = super.getxPosition();
+        }
        
+        //Showing possible moves
+        if ((biggest == cBiggest + 2) && (smallest == cSmallest + 1)){
+            test = true;
+        }
 
 
         return test;
