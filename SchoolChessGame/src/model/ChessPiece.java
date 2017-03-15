@@ -25,11 +25,15 @@ public abstract class ChessPiece {
     }
 
     public boolean canMoveTo(int x, int y) {
-        if ((x < 8) && (y < 8) && (x != xPosition) && (y != yPosition)) {
+        
+        if ((x < 8) && (y < 8) && ((x != xPosition)|| (y != yPosition))) {
+          //  System.out.println("ChessPiece::CanMoveTo = true");
             return true;
+        } else {
+          //  System.out.println("ChessPiece::CanMoveTo = False");
+        return false;
         }
 
-        return false;
     }
 
     public String positionToField(int x, int y) {
@@ -102,13 +106,13 @@ public abstract class ChessPiece {
 
     public void move(int x, int y) {
         if (canMoveTo(x, y) == true) {
-            System.out.println(this.color + " " + this.name
-                    + positionToField(xPosition, yPosition) + " -> " + positionToField(x, y));
+           // System.out.println(this.color + " " + this.name
+               //     + positionToField(xPosition, yPosition) + " -> " + positionToField(x, y));
 
             xPosition = x;
             yPosition = y;
         } else {
-            System.out.println("Ugyldigt træk!");
+          //  System.out.println("Ugyldigt træk!");
         }
     }
 
