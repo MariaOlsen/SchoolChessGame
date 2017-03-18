@@ -19,20 +19,6 @@ public class Main {
     public static void main(String[] args) {
 
         
-//        for (int x = 0; x < 8; x++) {
-//            for (int y = 0; y < 8; y++) {
-//                
-//                rook.canMoveTo(x, y);
-//                if (((x != sX) && (y == sY))
-//                        || ((x == sX) && (y != sY))) {
-//                    test = true;
-//                    System.out.println("Rook can move from: (" + sX + "," + sY + ") - (" + x + "," + y + ")");
-//                } else {
-//                    test = false;
-//                    System.out.println("Rook cannot move from: (" + sX + "," + sY + ") - (" + x + "," + y + ")");
-//                }
-//            }
-//        }
 
         ChessPiece[] chessPieces;
 
@@ -43,19 +29,23 @@ public class Main {
         chessPieces[2] = new Knight("Knight", "Grey", 3, 3);
 
         for (ChessPiece c : chessPieces) {
-            System.out.println("SHOW::");
-            c.show();
+            System.out.println(c.show());
+            System.out.println("");
+            
         }
 
+        
         chessPieces[0].move(3, 1);
+        
+        
         chessPieces[1].move(7, 0);
+        
         chessPieces[2].move(1, 2);
-        chessPieces[0].move(6, 1);
 
         for (ChessPiece c : chessPieces) {
-            c.show();
+            System.out.println("");
+            System.out.println("\n" + c.show());
         }
-
-   }
+    }
 
 }

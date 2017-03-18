@@ -15,35 +15,34 @@ public class Rook extends ChessPiece {
         super(name, color, xPosition, yPosition);
     }
 
+    
+    /*
+    Tests whether a piece can move to a specific field, depending on common rules and unique piece rules
+    */
     public boolean canMoveTo(int x, int y) {
-      //  System.out.println("ROOK::CAN)");
         if ((super.canMoveTo(x, y) == true) && (rookMove(x, y) == true)) {
             return true;
         } else {
-//            System.out.println("Super::MoveTo:: " + super.canMoveTo(x, y));
-//        System.out.println("RookMove:: " + rookMove(x,y));
         return false; 
         }
       
     }
 
+    
+    /*
+    Unique movement system for rooks. Supportive method for canMoveTo()
+    */
     private boolean rookMove(int x, int y) {
         boolean test = false;
+        
+        //If either x or y remains the same while the other variable changes, it's a viable move
         if (((x != super.getxPosition()) && (y == super.getyPosition()))
                 || ((x == super.getxPosition()) && (y != super.getyPosition()))) {
-//              System.out.println("Rook can move from: (" + super.getxPosition() + "," + super.getyPosition()
-//                      + ") - (" + x + "," + y + ")");
             test = true;
         } else {
             test = false;
-//             System.out.println("Rook cannot move from: (" + super.getxPosition() + "," + super.getyPosition()
-//                     + ") - (" + x + "," + y + ")");
-
         }
-        //System.out.println(test);
-        //System.out.println("ROOK: (" + x + "," + y
-//                + ")\nnPos: (" + super.getxPosition()
-//                + "," + super.getyPosition()+")");
+        
         return test;
     }
 
